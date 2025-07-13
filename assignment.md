@@ -21,7 +21,31 @@ Each entity has the following attributes:
 Answer:
 
 ```dbml
+Table user {
+  id int [pk, increment]
+  username varchar
+  email varchar
+  created_at datetime
+}
 
+Table post{
+  id int [pk, increment]
+  title varchar
+  body text
+  user_id int
+  status varchar
+  created_at datetime
+}
+
+Table follows {
+  following_user_id int [pk, increment]
+  followed_user_id int
+  created_at datetime
+}
+
+Ref: user.id < post.id // one-to-many
+Ref: user.id < follows.following_user_id //one-to-many
+Ref: user.id < follows.followed_user_id // one-to-many
 ```
 
 ### Question 2
