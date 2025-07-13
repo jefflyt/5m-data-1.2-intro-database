@@ -62,7 +62,37 @@ There are 4 entities, think of what attributes each entity should have.
 Answer:
 
 ```dbml
+Table customer {
+  customer_id int [pk, increment]
+  name varchar
+  email varchar
+  address varchar
+}
 
+Table book {
+  book_id int [pk, increment]
+  title varchar
+  author varchar
+  publish_date datetime
+}
+
+Table cart {
+  cart_id int [pk, increment]
+  Cus_order_id int
+  created_at datetime
+}
+
+Table cartitem {
+  cartitem_id int [pk, increment]
+  cart_order_id int
+  book_order_id int
+  qty int
+  created_at datetime
+}
+
+Ref: customer.customer_id - cart.Cus_order_id // one-to-one
+Ref: cart.cart_id < cartitem.cartitem_id // one-to-many
+Ref: cartitem.book_order_id < book.book_id // one-to-many
 ```
 
 ## Submission
